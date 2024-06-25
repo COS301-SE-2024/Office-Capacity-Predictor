@@ -12,7 +12,13 @@
     "lint": "expo lint"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "jest-expo",
+    "transformIgnorePatterns": [
+      "node_modules/(?!(react-native|@react-native|@gluestack-ui/themed)/)"
+    ],
+    "setupFiles": [
+      "<rootDir>/jest.setup.js"
+    ]
   },
   "dependencies": {
     "@eva-design/eva": "^2.2.0",

@@ -138,7 +138,7 @@ const BookingDetails = () => {
       >
         {item}
       </Text>
-      <TouchableOpacity onPress={() => removeAttendee(item)}>
+      <TouchableOpacity testID="remove-attendee-button" onPress={() => removeAttendee(item)}>
         <Ionicons name="close" size={25} color={isDark ? "#fff" : "#000"} />
       </TouchableOpacity>
     </View>
@@ -146,7 +146,7 @@ const BookingDetails = () => {
 
   const StepIndicator = () => (
     <View
-      style={{ flexDirection: "row", alignItems: "center", marginVertical: 20 }}
+    testID="step-indicator" style={{ flexDirection: "row", alignItems: "center", marginVertical: 20 }}
     >
       {steps.map((step, index) => (
         <React.Fragment key={index}>
@@ -241,7 +241,8 @@ const BookingDetails = () => {
           padding: 15,
         }}
       >
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity   testID="back-button"
+        onPress={() => navigation.goBack()}>
           <Ionicons
             name="arrow-back"
             size={24}
@@ -269,6 +270,7 @@ const BookingDetails = () => {
               uri: "https://fancyhouse-design.com/wp-content/uploads/2023/11/With-a-backdrop-of-Dubais-cityscape-the-office-interior-design-is-as-dynamic-as-it-is-luxurious..jpg",
             }}
             style={{ width: "100%", height: 150, borderRadius: 20 }}
+             testID="room-image"
           />
           <View style={{ padding: 15 }}>
             <Text
@@ -388,6 +390,7 @@ const BookingDetails = () => {
           <TouchableOpacity
             style={{ margin: 15, borderRadius: 25 }}
             onPress={handleBiometricAuth}
+            testID="confirm-booking-button"
           >
             <LinearGradient
               colors={["#614DC8", "#86EBCC", "#B2FC3A", "#EEF060"]}
@@ -431,6 +434,7 @@ const BookingDetails = () => {
               placeholderTextColor={isDark ? "#999" : "#666"}
               value={email}
               onChangeText={setEmail}
+              testID="email-input"
             />
             <TouchableOpacity
               onPress={addAttendee}
@@ -442,6 +446,7 @@ const BookingDetails = () => {
                 justifyContent: "center",
                 alignItems: "center",
               }}
+               testID="add-attendee-button"
             >
               <Ionicons name="add" size={24} color="black" />
             </TouchableOpacity>
@@ -468,12 +473,14 @@ const BookingDetails = () => {
 
 
             }}
+             testID="attendees-list"
           />
 
 
           <TouchableOpacity
             style={{ margin: 15, borderRadius: 25 }}
             onPress={() => onSubmit()}
+              testID="send-invites-button"
           >
             <LinearGradient
               colors={["#614DC8", "#86EBCC", "#B2FC3A", "#EEF060"]}
@@ -512,7 +519,7 @@ const BookingDetails = () => {
       )}
 
       {currentStep === 2 && (
-        <View style={{ padding: 15 }}>
+        <View style={{ padding: 15 }} testID="receipt-details">
           <Text
             style={{
               fontSize: 16,

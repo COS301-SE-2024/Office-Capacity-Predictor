@@ -114,11 +114,11 @@ const BookRoom = () => {
           <Text style={{ fontWeight: 'bold', fontSize: 18, color: textColor }}>Rooms</Text>
           <TouchableOpacity onPress={toggleLayout}>
             {layout === "row" ? (
-              <View style={{ backgroundColor: '#ADFF2F', alignSelf: 'center', padding: 8, borderRadius: 12 }}>
+              <View testID="row-layout" style={{ backgroundColor: '#ADFF2F', alignSelf: 'center', padding: 8, borderRadius: 12 }}>
                 <Ionicons name="grid-outline" size={22} color="#2C2C2E" />
               </View>
             ) : (
-              <View style={{ backgroundColor: '#ADFF2F', alignSelf: 'center', padding: 8, borderRadius: 12 }}>
+              <View testID="grid-layout" style={{ backgroundColor: '#ADFF2F', alignSelf: 'center', padding: 8, borderRadius: 12 }}>
                 <Octicons name="rows" size={22} color="#2C2C2E" />
               </View>
             )}

@@ -114,6 +114,21 @@ func ViewBookings(ctx *gin.Context, appsession *models.AppSession) {
 	ctx.JSON(http.StatusOK, utils.SuccessResponse(http.StatusOK, "Successfully fetched bookings!", bookings))
 }
 
+// ViewBookings handles the retrieval of all bookings for a user
+func RetrieveUserDetails(ctx *gin.Context, appsession *models.AppSession) {
+	// Extract the email query parameter
+	email := ctx.Query("email")
+	if email == "" || !utils.ValidateEmail(email) {
+		ctx.JSON(http.StatusBadRequest, utils.ErrorResponse(http.StatusBadRequest, "Invalid request payload", constants.InvalidRequestPayloadCode, "Expected Email Address", nil))
+		return
+	}
+
+	// Get user details
+	bookings, err := database.GetUserDetails(ctx, appsession.DB, email)
+
+	ctx.JSON(http.StatusOK, utils.SuccessResponse(http.StatusOK, "Successfully fetched bookings!", bookings))
+}
+
 func CancelBooking(ctx *gin.Context, appsession *models.AppSession) {
 	var cancelRequest map[string]interface{}
 	if err := ctx.ShouldBindJSON(&cancelRequest); err != nil {
